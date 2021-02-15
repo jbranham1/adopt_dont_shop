@@ -91,6 +91,17 @@ RSpec.describe 'Admin Application show page' do
           end
           expect(page).to have_content("Application Status: Approved")
         end
+        it "The pets will no longer be adoptable" do
+          visit "/admin/applications/#{@application.id}"
+          expect(page).to have_content("Application Status: Pending")
+          within "#pet-#{@pet1.id}" do
+            click_button "Approve Pet"
+          end
+          within "#pet-#{@pet2.id}" do
+            click_button "Approve Pet"
+          end
+          expect(@application.pets.all?(&:adoptable?)).to eq(false)
+        end
       end
       describe "And I don't approve all pets for an application" do
         it "The application status will change to 'Rejected'" do
@@ -101,6 +112,7 @@ RSpec.describe 'Admin Application show page' do
           end
           expect(page).to have_content("Application Status: Rejected")
         end
+
       end
     end
   end
