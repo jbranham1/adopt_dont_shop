@@ -20,7 +20,7 @@ describe Application, type: :model do
       expect(application.status).to eq('in_progress')
       expect(application.in_progress?).to eq(true)
       expect(application.pending?).to eq(false)
-      expect(application.accepted?).to eq(false)
+      expect(application.approved?).to eq(false)
       expect(application.rejected?).to eq(false)
     end
 
@@ -32,19 +32,19 @@ describe Application, type: :model do
       expect(application.status).to eq('pending')
       expect(application.in_progress?).to eq(false)
       expect(application.pending?).to eq(true)
-      expect(application.accepted?).to eq(false)
+      expect(application.approved?).to eq(false)
       expect(application.rejected?).to eq(false)
     end
 
-    it 'status can be accepted' do
+    it 'status can be approved' do
       application = Application.create!(first_name: 'Jenny', last_name: 'Branham',
                                         address: '123 Adoption Ln.', city: 'Denver',
                                         state: 'CO', zipcode: '80222',
-                                        description: 'description of application', status: 'accepted')
-      expect(application.status).to eq('accepted')
+                                        description: 'description of application', status: 'approved')
+      expect(application.status).to eq('approved')
       expect(application.in_progress?).to eq(false)
       expect(application.pending?).to eq(false)
-      expect(application.accepted?).to eq(true)
+      expect(application.approved?).to eq(true)
       expect(application.rejected?).to eq(false)
     end
 
@@ -56,7 +56,7 @@ describe Application, type: :model do
       expect(application.status).to eq('rejected')
       expect(application.in_progress?).to eq(false)
       expect(application.pending?).to eq(false)
-      expect(application.accepted?).to eq(false)
+      expect(application.approved?).to eq(false)
       expect(application.rejected?).to eq(true)
     end
   end

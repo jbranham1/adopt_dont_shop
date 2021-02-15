@@ -8,7 +8,7 @@ class Application < ApplicationRecord
               greater_than_or_equal_to: 0
             }
 
-  enum status: [:in_progress, :pending, :accepted, :rejected]
+  enum status: [:in_progress, :pending, :approved, :rejected]
   before_save :default_values
 
   def default_values

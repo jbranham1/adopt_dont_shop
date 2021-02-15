@@ -25,6 +25,7 @@ class ApplicationsController < ApplicationController
   def update
     application = Application.find(params[:id])
     application.update(application_params)
+    application.save
     redirect_to "/applications/#{application.id}"
   end
 

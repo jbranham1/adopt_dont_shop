@@ -9,7 +9,7 @@ RSpec.describe 'Admin Application show page' do
     shelter = create(:shelter, id: 1)
     @pet1 = create(:pet, id: 1, shelter_id: 1)
     @pet2 = create(:pet, id: 2, shelter_id: 1, name: "onyx")
-    @application = create(:application, id: 1)
+    @application = create(:application, id: 1, status: :pending)
     @application_pets = create(:application_pet, application_id: 1, pet_id: 1)
     @application_pets2 = create(:application_pet, application_id: 1, pet_id: 2)
   end
@@ -77,6 +77,29 @@ RSpec.describe 'Admin Application show page' do
               end
             end
           end
+        end
+      end
+      describe "And I approve all pets for an application" do
+        it "The application status will change to 'Approved'" do
+          visit "/admin/applications/#{@application.id}"
+          expect(page).to have_content("Application Status: Pending")
+          within "#pet-#{@pet1.id}" do
+            click_button "Approve Pet"
+          end
+          within "#pet-#{@pet2.id}" do
+            click_button "Approve Pet"
+          end
+          expect(page).to have_content("Application Status: Approved")
+        end
+      end
+      describe "And I don't approve all pets for an application" do
+        it "The application status will change to 'Rejected'" do
+          visit "/admin/applications/#{@application.id}"
+          expect(page).to have_content("Application Status: Pending")
+          within "#pet-#{@pet1.id}" do
+            click_button "Approve Pet"
+          end
+          expect(page).to have_content("Application Status: Rejected")
         end
       end
     end
