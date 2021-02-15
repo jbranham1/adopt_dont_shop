@@ -12,6 +12,13 @@ class AdminApplicationsController < ApplicationController
     else
       application.update(status: :rejected)
     end
+
+    if application.approved?
+      application.pets.each do |pet|
+        pet.update(adoptable: false)
+        pet.save
+      end
+    end
     application.save
     application_pet.save
     redirect_to "/admin/applications/#{params[:id]}"

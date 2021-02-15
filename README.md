@@ -231,7 +231,7 @@ And instead I see buttons to approve or reject the pet for this specific applica
 ```
 
 ```
-[ ] done
+[X] done
 
 All Pets Accepted on an Application
 
@@ -243,7 +243,7 @@ And I see the application's status has changed to "Approved"
 ```
 
 ```
-[ ] done
+[X] done
 
 One or More Pets Rejected on an Application
 
@@ -256,6 +256,7 @@ And I see the application's status has changed to "Rejected"
 ```
 
 ```
+[X] done
 Application Approval makes Pets not adoptable
 
 As a visitor
