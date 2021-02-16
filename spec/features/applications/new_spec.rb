@@ -33,7 +33,7 @@ RSpec.describe 'Application new page' do
 
     click_on 'Create Application'
 
-    expect(page).to have_content("Application not created: Required information missing.")
+    expect(page).to have_content("Application not created: First name can't be blank, Last name can't be blank, Zipcode is not a number.")
 
   end
 end

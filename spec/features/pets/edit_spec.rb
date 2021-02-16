@@ -17,9 +17,9 @@ RSpec.describe 'Update pet from pet show page' do
 
     expect(current_path).to eq("/pets/#{@pet1.id}/edit")
 
-    fill_in "name", with: "Thora"
-    fill_in "approximate_age", with: 5
-    fill_in "sex", with: "female"
+    fill_in 'pet[name]', with: "Thora"
+    fill_in "pet[approximate_age]", with: 5
+    fill_in "pet[sex]", with: "female"
     # fill_in "state", with: 'PA'
     # fill_in "zip", with: 12345
 

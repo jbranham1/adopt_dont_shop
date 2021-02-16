@@ -20,7 +20,7 @@ RSpec.describe 'Shelters index page' do
       click_link "Edit Shelter"
     end
 
-    fill_in "name", with: "Shoddy Shelter"
+    fill_in "shelter[name]", with: "Shoddy Shelter"
     click_button "Update Shelter"
     expect(current_path).to eq("/shelters/#{@shelter1.id}")
 
@@ -52,7 +52,7 @@ RSpec.describe 'Shelters index page' do
       click_link "Edit Shelter"
     end
 
-      fill_in "name", with: 'Poo and Paws'
+      fill_in "shelter[name]", with: 'Poo and Paws'
 
       click_button("Update Shelter")
 
