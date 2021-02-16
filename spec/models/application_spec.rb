@@ -15,7 +15,7 @@ describe Application, type: :model do
     it 'status can be in_progress by default' do
       application = Application.create!(first_name: 'Jenny', last_name: 'Branham',
                                         address: '123 Adoption Ln.', city: 'Denver',
-                                        state: 'CO', zipcode: '80222',
+                                        state: 'CO', zipcode: 80222,
                                         description: 'description of application')
       expect(application.status).to eq('in_progress')
       expect(application.in_progress?).to eq(true)
@@ -27,7 +27,7 @@ describe Application, type: :model do
     it 'status can be pending' do
       application = Application.create!(first_name: 'Jenny', last_name: 'Branham',
                                         address: '123 Adoption Ln.', city: 'Denver',
-                                        state: 'CO', zipcode: '80222',
+                                        state: 'CO', zipcode: 80222,
                                         description: 'description of application', status: 'pending')
       expect(application.status).to eq('pending')
       expect(application.in_progress?).to eq(false)
@@ -39,7 +39,7 @@ describe Application, type: :model do
     it 'status can be approved' do
       application = Application.create!(first_name: 'Jenny', last_name: 'Branham',
                                         address: '123 Adoption Ln.', city: 'Denver',
-                                        state: 'CO', zipcode: '80222',
+                                        state: 'CO', zipcode: 80222,
                                         description: 'description of application', status: 'approved')
       expect(application.status).to eq('approved')
       expect(application.in_progress?).to eq(false)
@@ -51,7 +51,7 @@ describe Application, type: :model do
     it 'status can be rejected' do
       application = Application.create!(first_name: 'Jenny', last_name: 'Branham',
                                         address: '123 Adoption Ln.', city: 'Denver',
-                                        state: 'CO', zipcode: '80222',
+                                        state: 'CO', zipcode: 80222,
                                         description: 'description of application', status: 'rejected')
       expect(application.status).to eq('rejected')
       expect(application.in_progress?).to eq(false)
