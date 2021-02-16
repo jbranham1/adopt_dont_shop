@@ -2,22 +2,38 @@ require 'rails_helper'
 
 RSpec.describe 'Admin Shelter show page' do
   before :each do
-    @shelter1 = Shelter.create!(name: "Shady Shelter", address: "123 Shady Ave", city: "Denver", state: "CO", zip: 80011)
+    ApplicationPet.destroy_all
+    Pet.destroy_all
+    Shelter.destroy_all
+    Application.destroy_all
+    @shelter1 = create(:shelter, id: 1)
+    create(:pet, id: 1, shelter_id: 1)
+    create(:pet, id: 2, shelter_id: 1, name: "onyx", approximate_age: 4)
   end
   describe "As a visitor" do
-    it "displays shelter with that id and all its attributes" do
-      visit "/admin/shelters/#{@shelter1.id}"
+    describe "When I visit the admin shelter show page" do
+      it "displays shelter with that id and all its attributes" do
+        visit "/admin/shelters/#{@shelter1.id}"
 
-      expect(page).to have_content(@shelter1.name)
-      expect(page).to have_content(@shelter1.address)
-      expect(page).to have_content(@shelter1.city)
-      expect(page).to have_content(@shelter1.state)
-      expect(page).to have_content(@shelter1.zip)
+        expect(page).to have_content(@shelter1.name)
+        expect(page).to have_content(@shelter1.address)
+        expect(page).to have_content(@shelter1.city)
+        expect(page).to have_content(@shelter1.state)
+        expect(page).to have_content(@shelter1.zip)
+      end
+      describe "Then I see a section for statistics" do
+        it "And in that section I see the average age of all adoptable pets for that shelter" do
+          visit "/admin/shelters/#{@shelter1.id}"
+          within("#section-stats") do
+            expect(page).to have_content("Average Age of All Adoptable Pets: 3.5")
+          end
+        end
+      end
     end
     describe "When I visit the admin shelter index and click on shelter link" do
       it "Then I am taken to that shelter's admin show page" do
         visit "/admin/shelters"
-        click_link("Shady Shelter")
+        click_link("Shelter 1")
 
         expect(current_path).to eq("/admin/shelters/#{@shelter1.id}")
       end

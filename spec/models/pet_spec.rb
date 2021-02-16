@@ -52,10 +52,6 @@ describe Pet, type: :model do
   describe "class methods" do
     describe "::find_by_name" do
       it 'find pets with name' do
-        ApplicationPet.destroy_all
-        Pet.destroy_all
-        Shelter.destroy_all
-
         shelter = Shelter.create!(name: 'Pet Rescue', address: '123 Adoption Ln.', city: 'Denver', state: 'CO', zip: '80222')
         pet1 = shelter.pets.create!(sex: :female, name: "Fluffy", approximate_age: 3, description: 'super cute')
         pet2 = shelter.pets.create!(sex: :female, name: "Daisy", approximate_age: 3, description: 'super cute')
