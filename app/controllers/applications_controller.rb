@@ -17,21 +17,16 @@ class ApplicationsController < ApplicationController
     if application.save
       redirect_to "/applications/#{application.id}"
     else
-      binding.pry
-      flash[:notice] = "Application not created: #{application.errors.full_messages.join(", ")}"
-      render "/applications/new"
+      flash[:notice] = "Application not created: #{application.errors.full_messages.join(", ")}."
+      render :new
     end
   end
 
   def update
     application = Application.find(params[:id])
     application.update(application_params)
-    if application.save
-      redirect_to "/applications/#{application.id}"
-    else
-      flash[:notice] = "Application not created: Required information missing."
-      render "/applications/edit"
-    end
+    application.save
+    redirect_to "/applications/#{application.id}"
   end
 
    private

@@ -1,14 +1,14 @@
-<%= form_tag "/pets/#{@pet.id}", method: :patch do %>
+<%= form_with url: "/pets/#{@pet.id}", model: @pet, local: true, method: :patch do |f|%>
   <h2>Edit <%= link_to "#{@pet.name}", "/pets/#{@pet.id}" %></h2>
-  <%= label_tag :image %>
-  <%= text_field_tag :image, @pet.image %><br>
-  <%= label_tag :name %>
-  <%= text_field_tag :name, @pet.name %><br>
-  <%= label_tag :description %>
-  <%= text_field_tag :description, @pet.description %><br>
-  <%= label_tag :approximate_age %>
-  <%= text_field_tag :approximate_age, @pet.approximate_age %><br>
-  <%= label_tag :sex %>
-  <%= text_field_tag :sex, @pet.sex %><br>
-  <%= submit_tag "Update Pet" %>
+  <%= f.label :image %>
+  <%= f.text_field :image%><br>
+  <%= f.label :name %>
+  <%= f.text_field :name%><br>
+  <%= f.label :description %>
+  <%= f.text_field :description%><br>
+  <%= f.label :approximate_age %>
+  <%= f.text_field :approximate_age%><br>
+  <%= f.label :sex %>
+  <%= f.text_field :sex%><br>
+  <%= f.submit "Update Pet" %>
 <% end %>
