@@ -16,8 +16,8 @@ RSpec.describe 'Admin Shelters index page' do
     describe "When I visit the admin shelter index ('/admin/shelters')" do
       it "displays names of all shelters in reverse alphabetical" do
         visit '/admin/shelters'
-        expect(page).to have_content(@shelter1.name)
-        expect(page).to have_content(@shelter2.name)
+        expect(page).to have_link(@shelter1.name)
+        expect(page).to have_link(@shelter2.name)
         expect(@shelter2.name).to appear_before(@shelter1.name)
       end
 
