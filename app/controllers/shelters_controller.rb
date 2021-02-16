@@ -11,8 +11,13 @@ class SheltersController < ApplicationController
   end
 
   def create
-    Shelter.create(shelter_params)
-    redirect_to '/shelters'
+    shelter = Shelter.new(shelter_params)
+    if shelter.save
+      redirect_to '/shelters'
+    else
+      flash[:notice] = "Shelter not created: #{shelter.errors.full_messages.join(", ")}"
+      render :new
+    end
   end
 
   def edit
@@ -21,7 +26,7 @@ class SheltersController < ApplicationController
 
   def update
     shelter = Shelter.find(params[:id])
-    shelter.update(shelter_params)
+    shelter.update(shelter_update_params)
     shelter.save
     redirect_to "/shelters/#{shelter.id}"
   end
@@ -35,5 +40,9 @@ class SheltersController < ApplicationController
 
   def shelter_params
     params.permit(:name, :address, :city, :state, :zip)
+  end
+
+  def shelter_update_params
+    params[:shelter].permit(:name, :address, :city, :state, :zip)
   end
 end
