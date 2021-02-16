@@ -14,5 +14,13 @@ RSpec.describe 'Admin Shelter show page' do
       expect(page).to have_content(@shelter1.state)
       expect(page).to have_content(@shelter1.zip)
     end
+    describe "When I visit the admin shelter index and click on shelter link" do
+      it "Then I am taken to that shelter's admin show page" do
+        visit "/admin/shelters"
+        click_link("Shady Shelter")
+
+        expect(current_path).to eq("/admin/shelters/#{@shelter1.id}")
+      end
+    end
   end
 end
