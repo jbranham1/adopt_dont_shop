@@ -11,6 +11,7 @@ describe Shelter, type: :model do
     @shelter2 = create(:shelter, id: 2, name: "A Shelter")
     pet1 = create(:pet, id: 1, shelter_id: 1)
     pet2 = create(:pet, id: 2, shelter_id: 1, name: "onyx", approximate_age: 4)
+    pet3 = create(:pet, id: 3, shelter_id: 2, name: "fluffy", approximate_age: 4)
     application = create(:application, id: 1, status: :pending)
     application2 = create(:application, id: 2, status: :approved)
     application_pets = create(:application_pet, application_id: 1, pet_id: 1)
