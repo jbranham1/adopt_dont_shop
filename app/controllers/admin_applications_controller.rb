@@ -8,19 +8,16 @@ class AdminApplicationsController < ApplicationController
     application_pet = ApplicationPet.find(params[:ap_id])
     application_pet.update(pets_params)
     if application.application_pets.all?(&:approved?)
-      application.update(status: :approved)
+      application.update!(status: :approved)
     else
-      application.update(status: :rejected)
+      application.update!(status: :rejected)
     end
 
     if application.approved?
       application.pets.each do |pet|
-        pet.update(adoptable: false)
-        pet.save
+        pet.update!(adoptable: false)
       end
     end
-    application.save
-    application_pet.save
     redirect_to "/admin/applications/#{params[:id]}"
   end
 

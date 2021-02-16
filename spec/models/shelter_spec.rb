@@ -15,6 +15,10 @@ describe Shelter, type: :model do
     it { should have_many :pets }
   end
 
+  describe 'validations' do
+    it { should validate_uniqueness_of :name }
+  end
+
   describe "instance methods" do
     describe "#by_reverse_alphabetical" do
       it 'returns shelters in reverse alphabetical' do
