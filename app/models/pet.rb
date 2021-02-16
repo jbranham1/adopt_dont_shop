@@ -14,4 +14,8 @@ class Pet < ApplicationRecord
   def self.find_by_name(name)
     where("lower(name) like ?", "%#{name.downcase}%")
   end
+
+  def approved_application?
+    applications.any?(&:approved?)
+  end
 end

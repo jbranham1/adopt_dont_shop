@@ -112,7 +112,29 @@ RSpec.describe 'Admin Application show page' do
           end
           expect(page).to have_content("Application Status: Rejected")
         end
+      end
+      describe "When a pet has an 'Approved' and 'Pending' application on them" do
+        describe "And I visit the admin application show page for the pending application" do
+          it "I don't see a button to approve them, but I see the reject button and a message that the pet has been approved" do
+            application2 = create(:application, id: 2)
+            application_pets3 = create(:application_pet, application_id: 2, pet_id: 1)
+            visit "/admin/applications/#{@application.id}"
 
+            within "#pet-#{@pet1.id}" do
+              click_button("Approve Pet")
+            end
+            within "#pet-#{@pet2.id}" do
+              click_button("Approve Pet")
+            end
+            visit "/admin/applications/#{application2.id}"
+
+            within "#pet-#{@pet1.id}" do
+              expect(page).to_not have_button("Approve Pet")
+              expect(page).to have_button("Reject Pet")
+              expect(page).to have_content("Pet has been approved on another application.")
+            end
+          end
+        end
       end
     end
   end
