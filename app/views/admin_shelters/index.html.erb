@@ -2,3 +2,9 @@
 <% @shelters.each do |shelter| %>
     <p><%= shelter.name %></p>
 <% end %>
+<section id="section-pending">
+  <h3>Shelters with Pending Applications</h3>
+  <% @pending_shelters.each do |shelter| %>
+    <%= shelter.name %></br>
+  <% end %>
+</section>

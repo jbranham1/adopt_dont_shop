@@ -8,4 +8,10 @@ class Shelter < ApplicationRecord
   def self.shelter_with_name_and_address(id)
     find_by_sql "select name, address, city, state, zip from shelters where id = #{id};"
   end
+
+  def self.shelters_with_pending_applications
+    joins(pets: [{application_pets: :application}])
+    .where('applications.status' => 1)
+    .select('distinct shelters.*')
+  end
 end
