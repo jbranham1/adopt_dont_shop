@@ -61,6 +61,20 @@ describe Pet, type: :model do
         pet2 = shelter.pets.create!(sex: :female, name: "Daisy", approximate_age: 3, description: 'super cute')
         expect(Pet.find_by_name('Fluffy')).to eq([pet1])
       end
+    end
   end
+  describe "instance methods" do
+    describe "#approved?" do
+      it 'find if pet has any approved applications' do
+        shelter = create(:shelter, id: 1)
+        @pet1 = create(:pet, id: 1, shelter_id: 1)
+        @application = create(:application, id: 1, status: :pending)
+        @application2 = create(:application, id: 2, status: :approved)
+        @application_pets = create(:application_pet, application_id: 1, pet_id: 1)
+        @application_pets2 = create(:application_pet, application_id: 2, pet_id: 1, status: :approved)
+
+        expect(@pet1.approved_application?).to eq(true)
+      end
+    end
   end
 end

@@ -269,7 +269,7 @@ Then I see that those pets are no longer "adoptable"
 ```
 Pets can only have one approved application on them at any time
 
-[ ] done
+[X] done
 
 As a visitor
 When a pet has an "Approved" application on them
@@ -289,6 +289,7 @@ These stories build out admin views for shelters. They will emphasize SQL and Ac
 For the following stories, you should write your queries in raw sql. You can use the [ActiveRecord find_by_sql](https://guides.rubyonrails.org/active_record_querying.html#finding-by-sql) method to execute raw sql queries.
 
 ```
+[X] done
 Admin Shelters Index
 
 As a visitor
@@ -297,6 +298,7 @@ Then I see all Shelters in the system listed in reverse alphabetical order by na
 ```
 
 ```
+[X] done
 Admin Shelters Show Page
 
 As a visitor
@@ -311,6 +313,7 @@ NOTE: Your query should only return the necessary data to complete the story
 For the following stories, you should fully leverage ActiveRecord methods in your queries.
 
 ```
+[ ] done
 Shelters with Pending Applications
 
 As a visitor
@@ -320,6 +323,7 @@ And in this section I see the name of every shelter that has a pending applicati
 ```
 
 ```
+[ ] done
 Shelters with Pending Applications Listed Alphabetically
 
 As a visitor
@@ -329,6 +333,7 @@ Then I see all those shelters are listed alphabetically
 ```
 
 ```
+[ ] done
 Admin Shelters Show Page Links
 
 As a visitor
@@ -339,6 +344,7 @@ Then I am taken to that shelter's admin show page
 ```
 
 ```
+[ ] done
 Average Pet Age
 
 As a visitor
@@ -348,6 +354,7 @@ And in that section I see the average age of all adoptable pets for that shelter
 ```
 
 ```
+[ ] done
 Count of Adoptable Pets
 
 As a visitor
@@ -357,6 +364,7 @@ And in that section I see the number of pets at that shelter that are adoptable
 ```
 
 ```
+[ ] done
 Count of Pets that have been Adopted
 
 As a visitor
@@ -368,6 +376,7 @@ Note: A Pet has been adopted from a shelter if they are part of an approved appl
 ```
 
 ```
+[ ] done
 Action Required
 
 As a visitor
@@ -377,6 +386,7 @@ In that section, I see a list of all pets for this shelter that have a pending a
 ```
 
 ```
+[ ] done
 Action Required Links to Application Show Page
 
 As a visitor

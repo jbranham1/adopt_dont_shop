@@ -8,10 +8,14 @@
     <% elsif application_pet.rejected? %>
         <p>Rejected!</p>
     <% else %>
-      <%= form_with url:"/admin/applications/#{@application.id}", method: :patch, local: true do |form| %>
-      <%= form.hidden_field :ap_id, value: "#{application_pet.id}" %>
-      <%= form.hidden_field :status, value: :approved %>
-      <%= form.submit 'Approve Pet' %>
+      <% if application_pet.pet.approved_application? %>
+      <p>Pet has been approved on another application.</p>
+      <% else %>
+        <%= form_with url:"/admin/applications/#{@application.id}", method: :patch, local: true do |form| %>
+        <%= form.hidden_field :ap_id, value: "#{application_pet.id}" %>
+        <%= form.hidden_field :status, value: :approved %>
+        <%= form.submit 'Approve Pet' %>
+        <% end %>
       <% end %>
       <%= form_with url:"/admin/applications/#{@application.id}", method: :patch, local: true do |form| %>
       <%= form.hidden_field :ap_id, value: "#{application_pet.id}" %>
