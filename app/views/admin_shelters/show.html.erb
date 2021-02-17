@@ -8,3 +8,13 @@
   <p>Count of Adoptable Pets: <%= @shelter.count_of_adoptable_pets %>
   <p>Count of Adopted Pets: <%= @shelter.count_of_adopted_pets %>
 </section>
+<section id="section-action-required">
+  <h2>Action Required</h2>
+  <% @shelter.pets.select(&:pending_application?).each do |pet| %>
+    <%= pet.name %>
+    <% pet.applications.select(&:pending?).each do |application| %>
+      <%= link_to 'Pending Application', "/admin/applications/#{application.id}" %>
+    <% end  %>
+    </br>
+  <% end %>
+</section>

@@ -7,7 +7,7 @@ RSpec.describe 'Admin Shelter show page' do
     Shelter.destroy_all
     Application.destroy_all
     @shelter1 = create(:shelter, id: 1)
-    create(:pet, id: 1, shelter_id: 1)
+    @pet1 = create(:pet, id: 1, shelter_id: 1)
     create(:pet, id: 2, shelter_id: 1, name: "onyx", approximate_age: 4)
   end
   describe "As a visitor" do
@@ -47,6 +47,29 @@ RSpec.describe 'Admin Shelter show page' do
           end
         end
       end
+      describe "Then I see a section titled 'Action Required'" do
+        it "In that section, I see a list of all pets for this shelter that have a pending application and have not yet been marked 'approved' or 'rejected'" do
+          application = create(:application, id: 1, status: :pending)
+          application_pets = create(:application_pet, application_id: 1, pet_id: 1)
+          visit "/admin/shelters/#{@shelter1.id}"
+          within("#section-action-required") do
+            expect(page).to have_content("Action Required")
+            expect(page).to have_content(@pet1.name)
+          end
+        end
+        it "Then next to each pet's name I see a link to the admin application show page where I can accept or reject the pet." do
+          application = create(:application, id: 1, status: :pending)
+          application_pets = create(:application_pet, application_id: 1, pet_id: 1)
+          visit "/admin/shelters/#{@shelter1.id}"
+          within("#section-action-required") do
+            expect(page).to have_link("Pending Application")
+
+            click_link("Pending Application")
+            expect(current_path).to eq "/admin/applications/#{application.id}"
+          end
+        end
+      end
+
     end
     describe "When I visit the admin shelter index and click on shelter link" do
       it "Then I am taken to that shelter's admin show page" do
