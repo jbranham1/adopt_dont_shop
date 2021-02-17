@@ -37,6 +37,7 @@ describe Shelter, type: :model do
     describe "::shelter_with_name_and_address" do
       it 'returns only the shelter name and address' do
         expect(Shelter.shelter_with_name_and_address(1).first.name).to eq(@shelter1.name)
+        expect(Shelter.shelter_with_name_and_address(1).first.full_address).to eq("#{@shelter1.address} #{@shelter1.city}, #{@shelter1.state} #{@shelter1.zip}")
       end
     end
     describe "::pending_shelters" do

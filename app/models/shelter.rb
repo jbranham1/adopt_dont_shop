@@ -8,7 +8,7 @@ class Shelter < ApplicationRecord
   end
 
   def self.shelter_with_name_and_address(id)
-    find_by_sql "select id, name, address, city, state, zip from shelters where id = #{id};"
+    find_by_sql "select id, name, (address || ' ' || city || ', ' || state || ' ' || zip) as full_address from shelters where id = #{id};"
   end
 
   def self.shelters_with_pending_applications
