@@ -17,7 +17,6 @@ RSpec.describe 'Application new page' do
 
     click_on 'Create Application'
 
-
     expect(page).to have_content('Application for Jenny Branham')
     expect(page).to have_content('3570 Cutter Ridge Rd')
     expect(page).to have_content('Conway')
@@ -34,6 +33,5 @@ RSpec.describe 'Application new page' do
     click_on 'Create Application'
 
     expect(page).to have_content("Application not created: First name can't be blank, Last name can't be blank, and Zipcode is not a number")
-
   end
 end

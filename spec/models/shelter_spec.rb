@@ -58,5 +58,11 @@ describe Shelter, type: :model do
         expect(@shelter2.count_of_adoptable_pets).to eq (1)
       end
     end
+    describe "#count_of_adopted_pets" do
+      it "gets the count all adopted pets for this shelter" do
+        expect(@shelter1.count_of_adopted_pets).to eq (1)
+        expect(@shelter2.count_of_adopted_pets).to eq (0)
+      end
+    end
   end
 end

@@ -34,6 +34,18 @@ RSpec.describe 'Admin Shelter show page' do
             expect(page).to have_content("Count of Adoptable Pets: 2")
           end
         end
+        it "And in that section I see the number of pets that have been adopted from that shelter" do
+          pet3 = create(:pet, id: 3, shelter_id: 1, name: "princess")
+          pet4 = create(:pet, id: 4, shelter_id: 1, name: "fluffy")
+          application3 = create(:application, id: 3, status: :approved)
+          application4 = create(:application, id: 4, status: :approved)
+          application_pets3 = create(:application_pet, application_id: 3, pet_id: 1)
+          application_pets4 = create(:application_pet, application_id: 4, pet_id: 2)
+          visit "/admin/shelters/#{@shelter1.id}"
+          within("#section-stats") do
+            expect(page).to have_content("Count of Adopted Pets: 2")
+          end
+        end
       end
     end
     describe "When I visit the admin shelter index and click on shelter link" do
