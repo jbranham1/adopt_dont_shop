@@ -14,8 +14,4 @@ class Application < ApplicationRecord
   def default_values
     status ||= :in_progress
   end
-
-  def capitalized_status
-    status.capitalize
-  end
 end

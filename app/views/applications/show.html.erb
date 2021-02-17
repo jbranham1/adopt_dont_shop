@@ -10,7 +10,7 @@ Pets' Names:
   <p><%= pet.name %></p>
   <% end %>
 </div>
-Application Status: <%= @application.capitalized_status %>
+Application Status: <%= @application.status.titleize %>
 <% if @application.in_progress? %>
   <section>
     <h3>Add a Pet to this Application</h3>
@@ -24,11 +24,7 @@ Application Status: <%= @application.capitalized_status %>
     <% if @pets %>
       <% @pets.each do |pet| %>
         <%= pet.name %>
-        <%= form_with url:"/application_pets", method: :post, local: true do |form| %>
-        <%= form.hidden_field :pet_id, value: "#{pet.id}" %>
-        <%= form.hidden_field :application_id, value:"#{@application.id}" %>
-        <%= form.submit 'Adopt this Pet' %>
-        <% end %>
+        <%= button_to("Adopt this Pet", "/application_pets", method: :post, params: {pet_id: pet.id, application_id: @application.id}) %>
       <% end %>
     <% end %>
   </section>

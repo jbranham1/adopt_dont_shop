@@ -29,7 +29,7 @@ RSpec.describe 'Application show page' do
           expect(page).to have_content(@pet1.name)
           expect(page).to have_content(@pet2.name)
         end
-        expect(page).to have_content("Application Status: #{@application.capitalized_status}")
+        expect(page).to have_content("Application Status: #{@application.status.titleize}")
       end
 
       describe "And that application has not been submitted," do
