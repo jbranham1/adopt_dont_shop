@@ -364,7 +364,7 @@ And in that section I see the number of pets at that shelter that are adoptable
 ```
 
 ```
-[ ] done
+[X] done
 Count of Pets that have been Adopted
 
 As a visitor
@@ -376,7 +376,7 @@ Note: A Pet has been adopted from a shelter if they are part of an approved appl
 ```
 
 ```
-[ ] done
+[X] done
 Action Required
 
 As a visitor
@@ -386,7 +386,7 @@ In that section, I see a list of all pets for this shelter that have a pending a
 ```
 
 ```
-[ ] done
+[X] done
 Action Required Links to Application Show Page
 
 As a visitor
