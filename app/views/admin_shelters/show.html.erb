@@ -12,5 +12,9 @@
   <h2>Action Required</h2>
   <% @shelter.pets.select(&:pending_application?).each do |pet| %>
     <%= pet.name %>
+    <% pet.applications.select(&:pending?).each do |application| %>
+      <%= link_to 'Pending Application', "/admin/applications/#{application.id}" %>
+    <% end  %>
+    </br>
   <% end %>
 </section>

@@ -57,6 +57,17 @@ RSpec.describe 'Admin Shelter show page' do
             expect(page).to have_content(@pet1.name)
           end
         end
+        it "Then next to each pet's name I see a link to the admin application show page where I can accept or reject the pet." do
+          application = create(:application, id: 1, status: :pending)
+          application_pets = create(:application_pet, application_id: 1, pet_id: 1)
+          visit "/admin/shelters/#{@shelter1.id}"
+          within("#section-action-required") do
+            expect(page).to have_link("Pending Application")
+
+            click_link("Pending Application")
+            expect(current_path).to eq "/admin/applications/#{application.id}"
+          end
+        end
       end
 
     end
