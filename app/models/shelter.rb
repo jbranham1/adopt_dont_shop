@@ -1,5 +1,6 @@
 class Shelter < ApplicationRecord
   has_many :pets
+  validates_presence_of :name
   validates_uniqueness_of :name
 
   def self.by_reverse_alphabetical
@@ -7,7 +8,7 @@ class Shelter < ApplicationRecord
   end
 
   def self.shelter_with_name_and_address(id)
-    find_by_sql "select name, address, city, state, zip from shelters where id = #{id};"
+    find_by_sql "select id, name, address, city, state, zip from shelters where id = #{id};"
   end
 
   def self.shelters_with_pending_applications
@@ -19,5 +20,9 @@ class Shelter < ApplicationRecord
 
   def average_age_for_adoptable_pets
     pets.where(adoptable: true).average(:approximate_age)
+  end
+
+  def count_of_adoptable_pets
+    pets.where(adoptable: true).count
   end
 end

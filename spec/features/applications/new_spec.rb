@@ -24,7 +24,7 @@ RSpec.describe 'Application new page' do
     expect(page).to have_content('AR')
     expect(page).to have_content('72034')
   end
-  it 'can not create an application without a first_name' do
+  it 'can not create an application without a first_name or last_name' do
     visit '/pets'
 
     click_link 'Start An Application'
@@ -33,7 +33,7 @@ RSpec.describe 'Application new page' do
 
     click_on 'Create Application'
 
-    expect(page).to have_content("Application not created: First name can't be blank, Last name can't be blank, Zipcode is not a number.")
+    expect(page).to have_content("Application not created: First name can't be blank, Last name can't be blank, and Zipcode is not a number")
 
   end
 end

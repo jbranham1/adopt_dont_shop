@@ -15,7 +15,7 @@ class SheltersController < ApplicationController
     if shelter.save
       redirect_to '/shelters'
     else
-      flash[:notice] = "Shelter not created: #{shelter.errors.full_messages.join(", ")}"
+      flash[:notice] = "Shelter not created: #{shelter.errors.full_messages.to_sentence}"
       render :new
     end
   end
