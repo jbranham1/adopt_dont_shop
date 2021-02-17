@@ -1,9 +1,9 @@
-<%= form_with url: "/pets/#{@pet.id}", model: @pet, local: true, method: :patch do |f|%>
+<%= form_with url: "/pets/#{@pet.id}", model: @pet, method: :patch,local: true do |f|%>
   <h2>Edit <%= link_to "#{@pet.name}", "/pets/#{@pet.id}" %></h2>
   <%= f.label :image %>
   <%= f.text_field :image%><br>
   <%= f.label :name %>
-  <%= f.text_field :name%><br>
+  <%= f.text_field :name, required: true %><br>
   <%= f.label :description %>
   <%= f.text_field :description%><br>
   <%= f.label :approximate_age %>

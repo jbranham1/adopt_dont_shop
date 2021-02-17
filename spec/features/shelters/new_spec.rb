@@ -25,4 +25,15 @@ RSpec.describe 'Create Shelter from index page' do
 
     expect(page).to have_content("Pa and Paws")
   end
+  it 'can not create a shelter without a name' do
+    visit '/shelters'
+
+    click_link 'New Shelter'
+
+    expect(current_path).to eq('/shelters/new')
+
+    click_on 'Create Shelter'
+
+    expect(page).to have_content("Shelter not created: Name can't be blank")
+  end
 end

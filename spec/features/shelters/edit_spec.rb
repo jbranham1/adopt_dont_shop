@@ -13,7 +13,7 @@ RSpec.describe 'Shelter update from show page' do
 
     expect(current_path).to eq("/shelters/#{@shelter1.id}/edit")
 
-    fill_in "name", with: 'Poo and Paws'
+    fill_in "shelter[name]", with: 'Poo and Paws'
     # fill_in "address", with: 'street avenue'
     # fill_in "city", with: 'Pitt'
     # fill_in "state", with: 'PA'

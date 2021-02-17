@@ -49,7 +49,7 @@ RSpec.describe 'Pets index page' do
       click_link "Update Pet"
     end
 
-    fill_in "name", with: "Calvin"
+    fill_in "pet[name]", with: "Calvin"
 
     click_button "Update Pet"
 

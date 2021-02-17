@@ -313,7 +313,7 @@ NOTE: Your query should only return the necessary data to complete the story
 For the following stories, you should fully leverage ActiveRecord methods in your queries.
 
 ```
-[ ] done
+[X] done
 Shelters with Pending Applications
 
 As a visitor
@@ -323,7 +323,7 @@ And in this section I see the name of every shelter that has a pending applicati
 ```
 
 ```
-[ ] done
+[X] done
 Shelters with Pending Applications Listed Alphabetically
 
 As a visitor
@@ -333,7 +333,7 @@ Then I see all those shelters are listed alphabetically
 ```
 
 ```
-[ ] done
+[X] done
 Admin Shelters Show Page Links
 
 As a visitor
@@ -344,7 +344,7 @@ Then I am taken to that shelter's admin show page
 ```
 
 ```
-[ ] done
+[X] done
 Average Pet Age
 
 As a visitor
@@ -354,7 +354,7 @@ And in that section I see the average age of all adoptable pets for that shelter
 ```
 
 ```
-[ ] done
+[X] done
 Count of Adoptable Pets
 
 As a visitor

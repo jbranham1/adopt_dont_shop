@@ -17,7 +17,7 @@ class ApplicationsController < ApplicationController
     if application.save
       redirect_to "/applications/#{application.id}"
     else
-      flash[:notice] = "Application not created: #{application.errors.full_messages.join(", ")}."
+      flash[:notice] = "Application not created: #{application.errors.full_messages.to_sentence}."
       render :new
     end
   end

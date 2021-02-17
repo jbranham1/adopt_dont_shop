@@ -24,6 +24,7 @@ describe Shelter, type: :model do
   end
 
   describe 'validations' do
+    it { should validate_presence_of :name }
     it { should validate_uniqueness_of :name }
   end
 
@@ -36,7 +37,6 @@ describe Shelter, type: :model do
     describe "::shelter_with_name_and_address" do
       it 'returns only the shelter name and address' do
         expect(Shelter.shelter_with_name_and_address(1).first.name).to eq(@shelter1.name)
-        expect(Shelter.shelter_with_name_and_address(1).first.id).to eq(nil)
       end
     end
     describe "::pending_shelters" do
@@ -50,6 +50,12 @@ describe Shelter, type: :model do
     describe "#average_age_for_adoptable_pets" do
       it "gets the average age of all adoptable pets for this shelter" do
         expect(@shelter1.average_age_for_adoptable_pets).to eq (3.5)
+      end
+    end
+    describe "#count_of_adoptable_pets" do
+      it "gets the count all adoptable pets for this shelter" do
+        expect(@shelter1.count_of_adoptable_pets).to eq (2)
+        expect(@shelter2.count_of_adoptable_pets).to eq (1)
       end
     end
   end
