@@ -19,6 +19,10 @@ class Pet < ApplicationRecord
     applications.any?(&:approved?)
   end
 
+  def pending_application?
+    applications.any?(&:pending?)
+  end
+
   def adoption_status
     if adoptable
       "Not Adopted"

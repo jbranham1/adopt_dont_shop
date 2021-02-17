@@ -33,4 +33,17 @@ RSpec.describe 'From shelter pets index page create new pet' do
     expect(page).to have_content(3)
     expect(page).to have_content("male")
   end
+  it "can't create a new pet without attributes" do
+
+    visit "/shelters/#{@shelter1.id}/pets"
+
+    click_link "Add Pet"
+
+    expect(current_path).to eq("/shelters/#{@shelter1.id}/pets/new")
+
+    click_on 'Create Pet'
+
+
+    expect(page).to have_content("Pet not created:")
+  end
 end
