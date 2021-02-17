@@ -18,4 +18,12 @@ class Pet < ApplicationRecord
   def approved_application?
     applications.any?(&:approved?)
   end
+
+  def adoption_status
+    if adoptable
+      "Not Adopted"
+    else
+      "Adopted"
+    end
+  end
 end
