@@ -1,0 +1,8 @@
+<div id='submittion'>
+  <h3>Why I would make a good owner for these pet(s):</h3>
+    <%= form_with url:"/applications/#{application_id}", method: :patch, local: true do |form| %>
+    <%= form.text_area :description%></br>
+    <%= form.hidden_field :status, value: :pending %>
+    <%= form.submit 'Submit' %>
+    <% end %>
+</div>

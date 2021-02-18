@@ -13,9 +13,9 @@ class Shelter < ApplicationRecord
 
   def self.shelters_with_pending_applications
     joins(pets: [{application_pets: :application}])
-    .where('applications.status' => 1)
-    .select('distinct shelters.*')
-    .order('shelters.name')
+    .where(applications: {status: 1})
+    .order(:name)
+    .distinct
   end
 
   def average_age_for_adoptable_pets
@@ -26,6 +26,6 @@ class Shelter < ApplicationRecord
     pets.where(adoptable: true).count
   end
   def count_of_adopted_pets
-    pets.select(&:approved_application?).count
+    pets.where(adoptable: false).count
   end
 end

@@ -9,8 +9,10 @@ Full Address: <%= @shelter.full_address %></br>
   <h2>Action Required</h2>
   <% @shelter.pets.select(&:pending_application?).each do |pet| %>
     <%= pet.name %>
+    </br>
     <% pet.applications.select(&:pending?).each do |application| %>
-      <%= link_to 'Pending Application', "/admin/applications/#{application.id}" %>
+      <%= link_to "Pending Application for #{application.first_name} #{application.last_name}", "/admin/applications/#{application.id}" %>
+      </br>
     <% end  %>
     </br>
   <% end %>

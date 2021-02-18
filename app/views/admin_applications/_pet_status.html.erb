@@ -1,0 +1,7 @@
+<% if application_pet.approved? %>
+  <p>Approved!</p>
+<% elsif application_pet.rejected? %>
+    <p>Rejected!</p>
+<% else %>
+<%= render partial: "pet_approval", locals: {application_pet: application_pet, application_id: application_id} %>
+<% end %>

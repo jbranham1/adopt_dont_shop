@@ -12,7 +12,7 @@ class Pet < ApplicationRecord
   enum sex: [:female, :male]
 
   def self.find_by_name(name)
-    where("lower(name) like ?", "%#{name.downcase}%")
+    where("name ilike ?", "%#{name}%")
   end
 
   def approved_application?
