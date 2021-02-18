@@ -1,6 +1,6 @@
 <% if application_pet.pet.approved_application? %>
 <p>Pet has been approved on another application.</p>
 <% else %>
-<%= button_to("Approve Pet", "/admin/applications/#{@application.id}", method: :patch, params: {ap_id: application_pet.id, status: :approved}) %>
+<%= button_to("Approve Pet", "/admin/applications/#{application_id}", method: :patch, params: {ap_id: application_pet.id, status: :approved}) %>
 <% end %>
-<%= button_to("Reject Pet", "/admin/applications/#{@application.id}", method: :patch, params: {ap_id: application_pet.id, status: :rejected}) %>
+<%= button_to("Reject Pet", "/admin/applications/#{application_id}", method: :patch, params: {ap_id: application_pet.id, status: :rejected}) %>
