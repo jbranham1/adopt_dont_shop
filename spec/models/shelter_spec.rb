@@ -11,7 +11,7 @@ describe Shelter, type: :model do
     @shelter2 = create(:shelter, id: 2, name: "A Shelter")
     pet1 = create(:pet, id: 1, shelter_id: 1)
     pet2 = create(:pet, id: 2, shelter_id: 1, name: "onyx", approximate_age: 4)
-    pet3 = create(:pet, id: 3, shelter_id: 2, name: "fluffy", approximate_age: 4)
+    pet3 = create(:pet, id: 3, shelter_id: 2, name: "fluffy", approximate_age: 4, adoptable: false)
     application = create(:application, id: 1, status: :pending)
     application2 = create(:application, id: 2, status: :approved)
     application_pets = create(:application_pet, application_id: 1, pet_id: 1)
@@ -56,13 +56,13 @@ describe Shelter, type: :model do
     describe "#count_of_adoptable_pets" do
       it "gets the count all adoptable pets for this shelter" do
         expect(@shelter1.count_of_adoptable_pets).to eq (2)
-        expect(@shelter2.count_of_adoptable_pets).to eq (1)
+        expect(@shelter2.count_of_adoptable_pets).to eq (0)
       end
     end
     describe "#count_of_adopted_pets" do
       it "gets the count all adopted pets for this shelter" do
-        expect(@shelter1.count_of_adopted_pets).to eq (1)
-        expect(@shelter2.count_of_adopted_pets).to eq (0)
+        expect(@shelter1.count_of_adopted_pets).to eq (0)
+        expect(@shelter2.count_of_adopted_pets).to eq (1)
       end
     end
   end

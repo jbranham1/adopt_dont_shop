@@ -26,6 +26,6 @@ class Shelter < ApplicationRecord
     pets.where(adoptable: true).count
   end
   def count_of_adopted_pets
-    pets.select(&:approved_application?).count
+    pets.where(adoptable: false).count
   end
 end

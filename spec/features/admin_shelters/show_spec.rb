@@ -32,8 +32,8 @@ RSpec.describe 'Admin Shelter show page' do
           end
         end
         it "And in that section I see the number of pets that have been adopted from that shelter" do
-          pet3 = create(:pet, id: 3, shelter_id: 1, name: "princess")
-          pet4 = create(:pet, id: 4, shelter_id: 1, name: "fluffy")
+          pet3 = create(:pet, id: 3, shelter_id: 1, name: "princess", adoptable: false)
+          pet4 = create(:pet, id: 4, shelter_id: 1, name: "fluffy", adoptable: false)
           application3 = create(:application, id: 3, status: :approved)
           application4 = create(:application, id: 4, status: :approved)
           application_pets3 = create(:application_pet, application_id: 3, pet_id: 1)
