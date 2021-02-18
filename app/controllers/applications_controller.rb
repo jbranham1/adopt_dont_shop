@@ -1,7 +1,4 @@
 class ApplicationsController < ApplicationController
-  def index
-  end
-
   def show
     @application = Application.find(params[:id])
     if params[:pet_name]
@@ -24,14 +21,13 @@ class ApplicationsController < ApplicationController
 
   def update
     application = Application.find(params[:id])
-    application.update(application_params)
-    application.save
+    application.update!(application_params)
     redirect_to "/applications/#{application.id}"
   end
 
-   private
+  private
 
-   def application_params
-     params.permit(:first_name, :last_name, :address, :city, :state, :zipcode, :description, :status)
-   end
+  def application_params
+   params.permit(:first_name, :last_name, :address, :city, :state, :zipcode, :description, :status)
+  end
 end
