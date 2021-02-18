@@ -8,6 +8,7 @@
     <% elsif application_pet.rejected? %>
         <p>Rejected!</p>
     <% else %>
+    <%= render "pet_approval" %>
       <% if application_pet.pet.approved_application? %>
       <p>Pet has been approved on another application.</p>
       <% else %>
