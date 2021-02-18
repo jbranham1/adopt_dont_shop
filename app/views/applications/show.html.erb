@@ -22,10 +22,7 @@ Application Status: <%= @application.status.titleize %>
       <% end %>
     </p>
     <% if @pets %>
-      <% @pets.each do |pet| %>
-        <%= pet.name %>
-        <%= button_to("Adopt this Pet", "/application_pets", method: :post, params: {pet_id: pet.id, application_id: @application.id}) %>
-      <% end %>
+    <%= render partial: "adopt_pets", locals: {pets: @pets, application_id: @application.id} %>
     <% end %>
   </section>
   <% if !@application.pets.empty? %>

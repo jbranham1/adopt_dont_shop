@@ -18,9 +18,7 @@ class AdminApplicationsController < ApplicationController
     end
 
     if application.approved?
-      application.pets.each do |pet|
-        pet.update!(adoptable: false)
-      end
+      application.update_pet_adoption_status
     end
     redirect_to "/admin/applications/#{params[:id]}"
   end

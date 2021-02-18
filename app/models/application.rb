@@ -14,4 +14,11 @@ class Application < ApplicationRecord
   def default_values
     status ||= :in_progress
   end
+
+  def update_pet_adoption_status
+    pets.each do |pet|
+      pet.update!(adoptable: false)
+      pet.save
+    end
+  end
 end
