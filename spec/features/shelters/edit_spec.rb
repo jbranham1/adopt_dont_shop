@@ -23,7 +23,7 @@ RSpec.describe 'Shelter update from show page' do
 
     expect(current_path).to eq("/shelters/#{@shelter1.id}")
 
-    expect(page).to have_content("Poo and Paws")
+    expect(page).to have_content("Poo And Paws")
     expect(page).to_not have_content("Shady Shelter")
   end
 end

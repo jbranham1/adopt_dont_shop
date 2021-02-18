@@ -58,7 +58,7 @@ RSpec.describe 'Shelters index page' do
 
       expect(current_path).to eq("/shelters/#{@shelter1.id}")
 
-      expect(page).to have_content("Poo and Paws")
+      expect(page).to have_content("Poo And Paws")
       expect(page).to_not have_content("Shady Shelter")
 
       visit "/shelters"
@@ -67,6 +67,6 @@ RSpec.describe 'Shelters index page' do
         expect(page).to have_link("Delete Shelter")
         click_link "Delete Shelter"
       end
-      expect(page).to_not have_content("Poo and Paws")
+      expect(page).to_not have_content("Poo And Paws")
   end
 end

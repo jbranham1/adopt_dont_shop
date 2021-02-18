@@ -23,7 +23,7 @@ RSpec.describe 'Create Shelter from index page' do
 
     expect(current_path).to eq('/shelters')
 
-    expect(page).to have_content("Pa and Paws")
+    expect(page).to have_content("Pa And Paws")
   end
   it 'can not create a shelter without a name' do
     visit '/shelters'

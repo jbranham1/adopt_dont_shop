@@ -11,6 +11,7 @@ class Pet < ApplicationRecord
   validates :name, uniqueness: {case_sensitive: false}
   enum sex: [:female, :male]
 
+  before_save :normalize_name
   def self.find_by_name(name)
     where("name ilike ?", "%#{name}%")
   end
@@ -29,5 +30,11 @@ class Pet < ApplicationRecord
     else
       "Adopted"
     end
+  end
+
+  private
+
+  def normalize_name
+    self.name = name.downcase.titleize
   end
 end
