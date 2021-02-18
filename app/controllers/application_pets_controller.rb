@@ -4,9 +4,9 @@ class ApplicationPetsController < ApplicationController
     redirect_to "/applications/#{params[:application_id]}"
   end
 
-   private
+  private
 
-   def application_pet_params
-     params.permit(:application_id, :pet_id)
-   end
+  def application_pet_params
+   params.permit(:application_id, :pet_id)
+  end
 end

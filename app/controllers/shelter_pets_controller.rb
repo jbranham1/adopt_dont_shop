@@ -19,8 +19,8 @@ class ShelterPetsController < ApplicationController
   end
 
   private
-  def shelter_pets_params
-    params.permit(:image, :name, :description, :approximate_age, :sex, :adoptable)
-  end
 
+  def shelter_pets_params
+    params[:pet].permit(:image, :name, :description, :approximate_age, :sex, :adoptable)
+  end
 end

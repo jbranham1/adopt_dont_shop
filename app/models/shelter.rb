@@ -3,6 +3,8 @@ class Shelter < ApplicationRecord
   validates_presence_of :name
   validates_uniqueness_of :name
 
+  before_save :normalize_name, :normalize_address
+
   def self.by_reverse_alphabetical
     find_by_sql "select * from shelters order by name desc;"
   end
@@ -25,7 +27,18 @@ class Shelter < ApplicationRecord
   def count_of_adoptable_pets
     pets.where(adoptable: true).count
   end
+
   def count_of_adopted_pets
     pets.where(adoptable: false).count
+  end
+
+  private
+
+  def normalize_name
+    self.name = name.downcase.titleize
+  end
+
+  def normalize_address
+    self.address = self.address.downcase.titleize
   end
 end

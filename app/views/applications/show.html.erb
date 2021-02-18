@@ -1,14 +1,7 @@
-<h1> Application for <%= "#{@application.first_name} #{@application.last_name}" %></h1>
-Address: <%= @application.address %><br>
-City: <%= @application.city %><br>
-State: <%= @application.state %><br>
-Zipcode: <%= @application.zipcode %><br>
-Description: <%= @application.description %><br>
+<%= render partial: "information", locals: {application: @application} %>
 Pets' Names:
 <div class="nav-bar">
-  <% @application.pets.each do |pet| %>
-  <p><%= pet.name %></p>
-  <% end %>
+  <%= render partial: "show_pets", locals: {pets: @application.pets} %>
 </div>
 Application Status: <%= @application.status.titleize %>
 <% if @application.in_progress? %>
