@@ -1,14 +1,5 @@
-<%= form_with url: "/pets/#{@pet.id}", model: @pet, method: :patch,local: true do |f|%>
-  <h2>Edit <%= link_to "#{@pet.name}", "/pets/#{@pet.id}" %></h2>
-  <%= f.label :image %>
-  <%= f.text_field :image%><br>
-  <%= f.label :name %>
-  <%= f.text_field :name, required: true %><br>
-  <%= f.label :description %>
-  <%= f.text_field :description%><br>
-  <%= f.label :approximate_age %>
-  <%= f.text_field :approximate_age%><br>
-  <%= f.label :sex %>
-  <%= f.text_field :sex%><br>
-  <%= f.submit "Update Pet" %>
-<% end %>
+<%= render partial: "shared/pet_form", locals: {path: "/pets/#{@pet.id}",
+                                    method_type: :patch,
+                                    button_text: 'Update Pet',
+                                    model: @pet,
+                                    title: "Edit #{@pet.name}"}%>
